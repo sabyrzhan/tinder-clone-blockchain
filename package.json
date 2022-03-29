@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^6.1.1",
+    "@sanity/client": "^3.3.0",
     "moralis": "^1.5.5",
     "next": "12.1.1",
     "react": "17.0.2",

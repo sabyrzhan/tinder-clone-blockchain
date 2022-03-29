@@ -45,6 +45,43 @@ export const TinderProvider = ({children}) => {
         setCurrentAccount('')
     }
 
+    const requestToCreateUserProfile = async(walletAddress, name) => {
+        try {
+            await fetch('/api/createUser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userWalletAddress: walletAddress,
+                    name: name
+                })
+            })
+        } catch (error) {
+            console.error('Error when user profile create', error)
+        }
+    }
+
+    const requestCurrentUserData = async walletAddress => {
+        try {
+            const response = await fetch(`/api/fetchCurrentUserData?activeAccount=${walletAddress}`)
+            const data = await response.json()
+            setCurrentUser(data.data)
+        } catch (error) {
+            console.error('Error requesting current user data', error)
+        }
+    }
+
+    const requestUsersData = async activeAccount => {
+        try {
+            const response = await fetch(`/api/fetchUsers?activeAccount=${activeAccount}`)
+            const data = await response.json()
+            setCardsData(data.data)
+        } catch (error) {
+            console.error('Error fetchs users data', error)
+        }
+    }
+
     return (
         <TinderContext.Provider
             value={{ connectWallet, disconnectWallet, currentAccount, currentUser }}
