@@ -84,7 +84,7 @@ export const TinderProvider = ({children}) => {
 
     return (
         <TinderContext.Provider
-            value={{ connectWallet, disconnectWallet, currentAccount, currentUser }}
+            value={{ connectWallet, disconnectWallet, currentAccount, currentUser, cardsData }}
         >
             {children}
         </TinderContext.Provider>

@@ -21,7 +21,7 @@ const style = {
     lightningColors: `border-purple-500 text-purple-500`,
 }
 
-const TinderCardItem = () => {
+const TinderCardItem = ({ card }) => {
     const onSwipe = dir => {
         if (dir == 'right') {
             handleRightSwipe(card, currentAccount);
@@ -34,16 +34,16 @@ const TinderCardItem = () => {
             onSwipe={onSwipe}
         >
             <div className={style.wrapper}
-                 style={{backgroundImage: `url("https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80")`}}
+                 style={{backgroundImage: `url("${card.imageUrl}")`}}
             >
                 <div className={style.space}>
                     <div className={style.name}>
-                        Lance
-                        <span className={style.age}>99</span>
+                        {card.name}
+                        <span className={style.age}>{card.age}</span>
                     </div>
                 </div>
                 <div className={style.walletAddress}>
-                    0x38...E7AF
+                    {card.walletAddress.slice(0,6)}...{card.walletAddress.slice(39)}
                 </div>
                 <div className={style.reactionsContainer}>
                     <div className={`${style.backColors} ${style.buttonContainer}`}>

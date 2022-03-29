@@ -1,7 +1,10 @@
 import React from 'react';
+import {useContext} from "react";
 import { SiTinder } from "react-icons/si";
 import CardHeader from "./CardHeader";
 import TinderCardItem from "./TinderCardItem";
+import {TinderContext} from "../context/TinderContext";
+import CardFooter from "./CardFooter";
 
 const style = {
     wrapper: `h-[45rem] w-[27rem] flex flex-col rounded-lg overflow-hidden`,
@@ -13,6 +16,7 @@ const style = {
 }
 
 const Card = () => {
+    const { cardsData } = useContext(TinderContext)
     return (
         <div className={style.wrapper}>
             <CardHeader/>
@@ -24,13 +28,12 @@ const Card = () => {
                     </div>
                 </div>
                 <div className={style.swipesContainer}>
-                    {/*{ cardsData.map((card, index) => (*/}
-                    {/*   <TinderCardItem card={card} key={index} />*/}
-                    {/*)) }*/}
-                    <TinderCardItem />
+                    { cardsData.map((card, index) => (
+                       <TinderCardItem card={card} key={index} />
+                    )) }
                 </div>
             </div>
-            {/*<CardFooter/>*/}
+            <CardFooter/>
         </div>
     )
 }
