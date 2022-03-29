@@ -10,11 +10,13 @@ const checkMatches = async(req,res) => {
 
         const sanityResponse = await client.fetch(query)
         let isMatch = false
-        sanityResponse[0].likes.forEach(likedUser => {
-            if (likedUser._ref === req.body.currentUser) {
-                isMatch = true
-            }
-        })
+        if (sanityResponse[0].likes) {
+            sanityResponse[0].likes.forEach(likedUser => {
+                if (likedUser._ref === req.body.currentUser) {
+                    isMatch = true
+                }
+            })
+        }
         res.status(200).send({ message: 'success', data: { isMatch: isMatch } })
     } catch (error) {
         console.error('Error fetching user info', error)
