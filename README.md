@@ -13,6 +13,7 @@ Tinder clone implementation from https://www.youtube.com/watch?v=4YjUaQKE6-I usi
    5. OpenSea (https://testnets.opensea.io)
 5. https://vanity-eth.tk/ -- fake eth address generator
 6. https://unsplash.com -- for test images
+7. https://faucets.chain.link/rinkeby -- to send test coins to Rinkeby wallet
 
 # Running locally
 1. Do `npm install`
